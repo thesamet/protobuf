@@ -794,8 +794,8 @@ GenerateSerializationCode(io::Printer* printer) const {
   if (descriptor_->options().packed()) {
     printer->Print(variables_,
       "if (get$capitalized_name$List().size() > 0) {\n"
-      "  output.writeRawVarint32($tag$);\n"
-      "  output.writeRawVarint32($name$MemoizedSerializedSize);\n"
+      "  output.writeUInt32NoTag($tag$);\n"
+      "  output.writeUInt32NoTag($name$MemoizedSerializedSize);\n"
       "}\n"
       "for (int i = 0; i < $name$_.size(); i++) {\n"
       "  output.write$capitalized_type$NoTag($name$_.get(i));\n"

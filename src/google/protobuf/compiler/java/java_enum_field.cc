@@ -266,8 +266,8 @@ GenerateParsingCode(io::Printer* printer) const {
       "  unknownFields.mergeVarintField($number$, rawValue);\n");
   } else {
     printer->Print(variables_,
-      "  unknownFieldsCodedOutput.writeRawVarint32(tag);\n"
-      "  unknownFieldsCodedOutput.writeRawVarint32(rawValue);\n");
+      "  unknownFieldsCodedOutput.writeUInt32NoTag(tag);\n"
+      "  unknownFieldsCodedOutput.writeUInt32NoTag(rawValue);\n");
   }
   printer->Print(variables_,
     "} else {\n"
@@ -419,8 +419,8 @@ GenerateParsingCode(io::Printer* printer) const {
       "  unknownFields.mergeVarintField($number$, rawValue);\n");
   } else {
     printer->Print(variables_,
-      "  unknownFieldsCodedOutput.writeRawVarint32(tag);\n"
-      "  unknownFieldsCodedOutput.writeRawVarint32(rawValue);\n");
+      "  unknownFieldsCodedOutput.writeUInt32NoTag(tag);\n"
+      "  unknownFieldsCodedOutput.writeUInt32NoTag(rawValue);\n");
   }
   printer->Print(variables_,
     "} else {\n"
@@ -657,8 +657,8 @@ GenerateParsingCode(io::Printer* printer) const {
       "  unknownFields.mergeVarintField($number$, rawValue);\n");
   } else {
     printer->Print(variables_,
-      "  unknownFieldsCodedOutput.writeRawVarint32(tag);\n"
-      "  unknownFieldsCodedOutput.writeRawVarint32(rawValue);\n");
+      "  unknownFieldsCodedOutput.writeUInt32NoTag(tag);\n"
+      "  unknownFieldsCodedOutput.writeUInt32NoTag(rawValue);\n");
   }
   printer->Print(variables_,
     "  } else {\n"
@@ -701,8 +701,8 @@ GenerateSerializationCode(io::Printer* printer) const {
   if (descriptor_->options().packed()) {
     printer->Print(variables_,
       "if (get$capitalized_name$List().size() > 0) {\n"
-      "  output.writeRawVarint32($tag$);\n"
-      "  output.writeRawVarint32($name$MemoizedSerializedSize);\n"
+      "  output.writeUInt32NoTag($tag$);\n"
+      "  output.writeUInt32NoTag($name$MemoizedSerializedSize);\n"
       "}\n"
       "for (int i = 0; i < $name$_.size(); i++) {\n"
       "  output.writeEnumNoTag($name$_.get(i).getNumber());\n"
@@ -734,7 +734,7 @@ GenerateSerializedSizeCode(io::Printer* printer) const {
       "if (!get$capitalized_name$List().isEmpty()) {"
       "  size += $tag_size$;\n"
       "  size += com.google.protobuf.CodedOutputStream\n"
-      "    .computeRawVarint32Size(dataSize);\n"
+      "    .computeUInt32SizeNoTag(dataSize);\n"
       "}");
   } else {
     printer->Print(variables_,
