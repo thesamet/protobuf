@@ -122,6 +122,7 @@ GRPC (http://www.grpc.io/) is Google's RPC implementation for Protocol Buffers. 
 * https://github.com/Yeolar/raster (C++)
 * https://github.com/jnordberg/wsrpc (JavaScript Node.js/Browser)
 * https://github.com/ppissias/xsrpcj (Java)
+* https://scalapb.github.io/zio-grpc/ (Scala with ZIO)
 
 Inactive:
 
